@@ -1,0 +1,16 @@
+div.cloudtitle {
+  height:95px;
+  width: 100%;
+  text-align: right;
+  background-image: url("../../assets/Cloud_sm.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  margin-bottom: 20px;
+}
+
+div.cloudtitletext {
+  padding-top: 20px;
+  width: 100%;
+  text-align: right;
+  color: #003366;
+}

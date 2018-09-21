@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout.html}">
+  <head>
+    <title>Taco Cloud</title>
+  </head>
+  
+  <body>
+    <section layout:fragment="main" class="content">  
+      <h1>Discount codes:</h1>
+      
+      <ul>
+        <li th:each="code : ${codes}">
+          Use code <b>"<span th:text="${code.key}"></span>"</b> for
+          <span th:text="${code.value}"></span>% off your order.</li>
+      </ul>
+    </section>  
+  </body>
+
+</html>

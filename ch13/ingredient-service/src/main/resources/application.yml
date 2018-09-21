@@ -1,0 +1,22 @@
+server:
+  port: 0
+  
+spring:
+  application:
+    name: ingredient-service
+
+#
+# This sets the location of the Eureka server. The config shown here differs
+# slightly from the config in chapter 13 in that it references a localhost
+# Eureka instead of a Eureka at eureka1.tacocloud.com. That's because the
+# domain in the book is made up for the sake of the example but doesn't really
+# work. 
+#
+# It's also worth noting that since Eureka clients default to assume that there
+# is a Eureka at http://localhost:8761/eureka/, setting this property explicitly
+# to reference a local instance isn't strictly required.
+#    
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://localhost:8761/eureka/

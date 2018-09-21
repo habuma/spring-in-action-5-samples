@@ -1,0 +1,37 @@
+# The values given here are actually the default values. But they are explicitly
+# set here as an example of setting the Artemis properties.
+spring:
+  jms:
+    template:
+      default-destination: tacocloud.order.queue
+  artemis:
+    host: localhost
+    port: 61616
+    user: tacoweb
+    password: letm31n
+    embedded:
+      enabled: false
+      
+  kafka:
+    bootstrap-servers:
+    - localhost:9092
+    template:
+      default-topic: tacocloud.orders.topic
+    consumer:
+      key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer    
+---
+# None of these properties will actually work as configured for this profile.
+# But it is left here as an example of configuring for a production profile
+# that will override the local configuration in the default profile.
+spring:
+  profiles: production
+    
+  artemis:
+    host: artemis.tacocloud.com
+    port: 61617
+    user: tacoweb
+    password: l3tm31n

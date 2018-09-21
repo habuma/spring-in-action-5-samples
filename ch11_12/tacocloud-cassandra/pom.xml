@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>sia</groupId>
+  	<artifactId>taco-cloud-parent</artifactId>
+  	<version>0.0.11-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-parent</artifactId>
+  		<version>2.0.4.RELEASE</version>
+  		<relativePath/>
+  	</parent>
+
+    <properties>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <tacocloud.version>${project.version}</tacocloud.version>
+    </properties>
+
+    <modules>
+      <module>tacos</module>
+      <module>tacocloud-api</module>
+      <module>tacocloud-data</module>
+      <module>tacocloud-domain</module>
+      <module>tacocloud-email</module>
+      <module>tacocloud-kitchen</module>
+      <module>tacocloud-messaging-jms</module>
+      <module>tacocloud-messaging-kafka</module>
+      <module>tacocloud-messaging-rabbitmq</module>
+      <module>tacocloud-restclient</module>
+      <module>tacocloud-security</module>
+      <module>tacocloud-web</module>
+      <module>tacocloud-ui</module>
+    </modules>
+
+</project>

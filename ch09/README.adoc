@@ -1,0 +1,13 @@
+= Chapter 9 samples
+
+This folder contains 2 subfolders:
+
+ - `simple-flow` : Shows the simple example from section 9.1
+ - `taco-cloud` : The Taco Cloud sample, updated with a new `tacocloud-email`
+   subproject, with code from section 9.3. (It also includes changes to the
+   API, Domain, and Data subprojects to support submitting orders via email.)
+
+Section 9.2 contains many disjointed snippets, but no complete example.
+Therefore, I have not included section 9.2 code in this folder. I may circle
+back later and create one or more samples that use those snippets in more
+complete samples.

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: greetings
+    
+  cloud:
+    config:
+      uri: http://localhost:8888
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

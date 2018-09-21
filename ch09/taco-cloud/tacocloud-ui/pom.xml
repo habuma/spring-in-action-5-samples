@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+          http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>tacocloud-ui</artifactId>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>sia</groupId>
+  	<artifactId>taco-cloud-parent</artifactId>
+		<version>0.0.9-SNAPSHOT</version>
+	</parent>
+
+	<name>tacocloud-ui</name>
+	<description>Taco Cloud UI</description>
+
+  <properties>
+      <node.version>v6.9.1</node.version>
+      <yarn.version>v0.24.6</yarn.version>
+      <frontend-maven-plugin.version>1.4</frontend-maven-plugin.version>
+      <environment>dev</environment>
+  </properties>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>dist</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>dist</directory>
+              <includes>
+                <include>*</include>
+              </includes>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>${frontend-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <configuration>
+              <nodeVersion>${node.version}</nodeVersion>
+              <npmVersion>${npm.version}</npmVersion>
+            </configuration>
+          </execution>
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>build</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>run-script build</arguments>
+            </configuration>
+            <phase>generate-resources</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <outputDirectory> ${project.build.outputDirectory}\static</outputDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title>Taco Cloud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/style.css}"></link>
+  </head>
+
+  <body>
+    <div>
+      <div class="header">
+        <div class="logo">
+          <a th:href="@{/ingredients}"><img th:src="@{/images/TacoCloud.png}"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="cloudtitle">
+        <div class="cloudtitletext">
+          <h2>Ingredient List</h2>
+        </div>
+      </div>
+
+	  <ul>
+	  	<li th:each="ingredient : ${ingredients}">
+	  		<a th:href="@{/ingredients/{ingredientId}(ingredientId=${ingredient.id})}" 
+	  		   th:text="${ingredient.name}">INGREDIENT NAME</a>
+	  	</li>
+	  </ul>
+
+    </div>
+
+    <div class="footer">
+      <div class="footerText">
+        To learn more about Taco Cloud, read <a href="https://www.manning.com/books/spring-in-action-fifth-edition"><i>Spring in Action, 5th Edition</i></a>
+      </div>
+    </div>
+
+  </body>
+</html>

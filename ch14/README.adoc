@@ -1,0 +1,84 @@
+= Taco Cloud v0.0.14
+
+This folder contains the source code for the Taco Cloud sample from Spring in Action, 5th edition, as presented in Chapter 14. It also includes a separate project, unrelated to Taco Cloud, in the `greetings` folder. See the README.adoc file in that folder for details.
+
+At this time, the code in this folder focuses primarily on the Eureka service registry, a Spring Cloud config server, an ingredient service, and a client that discovers that ingredient service from Eureka. That is to say that it contains only code relevant to the content in chapter 14, but not the complete Taco Cloud application. At some time in the future I may build out the remainder of the Taco Cloud application as a collection of microservices that register and discover each other through Eureka and use Spring Cloud Config Server for configuration.
+
+It's also important to note that example code tends to evolve throughout the course of a chapter. Moreover, there are often many different variants of a given piece of code presented. The sample code given here may only represent one such variant or evolution.
+
+== Running Taco Cloud
+
+This folder contains three distinct projects:
+
+ * `service-registry` : The Eureka service registry
+ * `config-server` : The Spring Cloud Config Server
+ * `ingredient-service` : The ingredient service
+ * `ingredient-client` : A client application that discovers the ingredient service from Eureka and consumes its endpoints
+
+You'll need to build and run each of the applications individually. In all cases, you can build the application using Maven like this:
+
+[source,sh]
+----
+% ./mvnw clean package
+----
+
+Once the projects are built, you can run their executable JAR files individually. For example, you can run the service registry like this:
+
+[source,sh]
+----
+% java -jar target/service-registry-0.0.14-SNAPSHOT.jar
+----
+
+The config server can be run like this:
+
+[source,sh]
+----
+% java -jar target/config-server-0.0.14-SNAPSHOT.jar
+----
+The ingredient service can be run like this:
+
+[source,sh]
+----
+% java -jar target/ingredient-service-0.0.14-SNAPSHOT.jar
+----
+
+And the ingredient client can be run like this:
+
+[source,sh]
+----
+% java -jar target/ingredient-client-0.0.14-SNAPSHOT.jar
+----
+
+Once each application has started up, the service registry will be listening on port 8761, the config server will be listening on port 8888, the ingredient client will be listening on port 8080, and the ingredient service will be listening on a randomly chosen port.
+
+To see it all in action, open your web browser and navigate to http://localhost:8080 to see a list of ingredients. If you click on an ingredient, you'll be shown an ingredient detail page. The list and the data for each ingredient is ultimately produced by the ingredient service and consumed/presented by the ingredient client.
+
+Note that it may take a few moments for the ingredient service to become fully registered with the service registry so that the ingredient client can find it. If you get errors from the ingredient client application, give it a few moments and refresh the page.
+
+By default, the ingredient service is consumed by a `@LoadBalanced` `RestTemplate`. But the ingredient client project also contains code for consuming the service with `WebClient` and with Feign. These options can be enabled by running the ingredient-client application with either the "webclient" profile or the "feign" profile active. For example, to run the client to use `WebClient`:
+
+[source,sh]
+----
+% java -jar -Dspring.profiles.active=webclient target/ingredient-client-0.0.14-SNAPSHOT.jar
+----
+
+Or, to run it with the Feign-based client:
+
+[source,sh]
+----
+% java -jar -Dspring.profiles.active=feign target/ingredient-client-0.0.14-SNAPSHOT.jar
+----
+
+
+=== What's missing/broken...
+
+As stated earlier, this folder only contains code directly relevant to the discussion in chapter 14 and does not contain the complete Taco Cloud application. At some future time, I may build out the complete Taco Cloud application as a collection of microservices.
+
+Certain topics in chapter 14 are difficult to preconfigure in a sample code project like this. For example, if I were to enable the Config Server in this project to serve secrets from Vault, you would need to have Vault installed, have created a token in Vault, and have configured that token in each of the client applications in order for even the simplest pieces of the example code to work.
+
+Other situations that are similarly difficult to preconfigure include:
+
+ - Encrypting/decrypting values served through the config server. (Requires that a keystore be created and configured.)
+ - Refreshing configuration properties. (Requires that RabbitMQ or Kafka be setup along with a webhook. Moreover, if the application is running on localhost, requires that the webook be configured in a local Git server such as Gogs, which itself requires that Gogs be installed.)
+
+In cases like these, I've chosen to not provide explicit configuration in this sample project. Instead, I invite you to refer to chapter 14 and perform the steps necessary to enable such features.

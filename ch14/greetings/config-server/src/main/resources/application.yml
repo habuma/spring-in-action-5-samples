@@ -1,0 +1,17 @@
+server:
+  port: 8888
+  
+# Note that this configuration reference a greeting-config repository in my
+# GitHub org. Because it's in my org, you won't be able to make changes to the
+# configuration it holds and thus won't be able to exercise the update capability
+# described in section 14.6 of the book. 
+# 
+# You are welcome to continue using this repository as a source of configuration
+# data, but if you want to play around and tweak the configuration, you'll
+# need to setup your own configuration repository (or fork mine). 
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/habuma/greeting-config

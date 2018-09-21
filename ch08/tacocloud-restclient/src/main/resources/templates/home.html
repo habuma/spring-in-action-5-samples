@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout.html}">
+  <head>
+    <title>Taco Cloud</title>
+    <script th:src="@{/scripts/recents.js}"></script>
+  </head>
+  
+  <body>
+    <section layout:fragment="main" class="content">	    
+	    <a th:href="@{/design}" id="design">Design a taco</a>
+	    
+	    <div id="recents"></div>
+	</section>    
+  </body>
+</html>

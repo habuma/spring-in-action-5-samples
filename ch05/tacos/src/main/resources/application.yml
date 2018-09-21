@@ -1,0 +1,28 @@
+#spring:
+#  security:
+#    user:
+#      name: buzz
+#      password: infinity
+
+taco:
+  orders:
+    pageSize: 10
+
+
+  discount:
+    codes:
+      abcdef: 10
+    
+---
+spring:
+  profiles: prod
+  
+  datasource:
+    url: jdbc:mysql://localhost/tacocloud
+    username: tacouser
+    password: tacopassword
+    
+logging:
+  level:
+    tacos: WARN
+    

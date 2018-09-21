@@ -1,0 +1,10 @@
+button {
+  background-color: rgba(118, 214, 255, 0.25);
+  border: 1px solid #76D6FF;
+  color: #003366;
+  font-size: 16pt;
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}

@@ -1,0 +1,18 @@
+div.footer {
+  background-color: #76D6FF;
+  background: linear-gradient(white, #76D6FF);
+  width: 100%;
+  height: 70px;
+  border-radius: 10px;
+}
+
+div.footerText {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+  padding-top: 35px;
+  font-size: 10pt;
+}
+
+a {
+  color: inherit;
+}

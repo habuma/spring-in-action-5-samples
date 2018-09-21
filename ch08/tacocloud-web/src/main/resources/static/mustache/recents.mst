@@ -1,0 +1,11 @@
+<h2>A few of the most recently created taco masterpieces...</h2>
+<dl>
+  {{#.}}
+  <dt><b>{{name}}</b></dt>
+  <dd>
+    {{#ingredients}}
+      {{name}}, 
+    {{/ingredients}}
+  </dd>
+  {{/.}}
+</dl>

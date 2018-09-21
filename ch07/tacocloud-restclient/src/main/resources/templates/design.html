@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout.html}">
+<head>
+<title>Taco Cloud</title>
+<script th:src="@{/scripts/ingredients.js}"></script>
+</head>
+
+<body>
+  <section layout:fragment="main" class="content">
+    <h1>Design your taco!</h1>
+    <h2>
+      Feelin' hungry, <span sec:authentication="principal.fullname">NAME</span>?
+    </h2>
+
+    <form th:method="POST" 
+          th:object="${design}" 
+          th:action="@{/design}"
+          id="tacoForm">
+
+      <span class="validationError"
+        th:if="${#fields.hasErrors('ingredients')}"
+        th:errors="*{ingredients}">Ingredient Error</span>
+
+      <div class="grid">
+        <div class="ingredient-group">
+          <h3>Designate your wrap:</h3>
+          <div id="wraps"></div>
+        </div>
+
+        <div class="ingredient-group">
+          <h3>Pick your protein:</h3>
+          <div id="proteins"></div>
+        </div>
+
+        <div class="ingredient-group">
+          <h3>Choose your cheese:</h3>
+          <div id="cheeses"></div>
+        </div>
+
+        <div class="ingredient-group">
+          <h3>Determine your veggies:</h3>
+          <div id="veggies"></div>
+        </div>
+
+        <div class="ingredient-group">
+          <h3>Select your sauce:</h3>
+          <div id="sauces"></div>
+        </div>
+      </div>
+
+      <div>
+        <h3>Name your taco creation:</h3>
+        <input type="text" th:field="*{name}" /> <span
+          class="validationError" th:if="${#fields.hasErrors('name')}"
+          th:errors="*{name}">Name Error</span> <br />
+
+        <button>Submit your taco</button>
+      </div>
+    </form>
+  </section>
+</body>
+</html>

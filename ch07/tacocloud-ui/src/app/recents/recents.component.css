@@ -1,0 +1,69 @@
+div.recentsblock {
+  min-width: 1000px;
+}
+
+div.tacoblock {
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  background-image: url('../../assets/taco-icon.png');
+  background-repeat: no-repeat;
+  background-color: rgba(118, 214, 255, 0.25);
+  margin: 10px;
+  border-radius: 10px;
+  text-align: right;
+  padding: 0 10px 10px 0;
+  height: 100%;
+  color: #003366;
+  border: 1px solid #76D6FF;
+}
+
+div.tacoblock a {
+  text-decoration: none;
+  font-size: 12pt;
+  font-weight: bold;
+  color: #003366;
+  background-color: #76D6FF;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+div.tacoName {
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid lightblue;
+  padding-bottom: 10px;
+  text-transform: capitalize;
+}
+
+div.tacoDesc {
+  padding: 20px;
+  text-align: center;
+  font-size: 12pt;
+}
+
+ul.commalist {
+  display: inline;
+  list-style: none;
+  padding: 0;
+}
+
+ul.commalist li {
+  display: inline;
+}
+
+ul.commalist li:not(:first-child):before {
+  content: ", ";
+}
+
+ul.commalist li:last-child:before {
+  content: " and ";
+}
+
+ul.commalist li:only-child:before {
+  content: "";
+}
+
+.small {
+  font-size: 12pt;
+}

@@ -1,0 +1,58 @@
+body {
+	font-family: arial;
+}
+
+div.header {
+	margin-top:50px;
+	height: 100px;
+	background-image: url("images/cloud-taco.png");
+	text-align: right;
+}
+
+img.logo {
+	float: left; 
+	height:200px;
+}
+
+section.content {
+	margin-top: 50px;
+	margin-left:250px;
+	margin=right:250px;
+}
+
+div.footer {
+	height: 50px;
+	background-image: url("images/cloud-taco.png");
+}
+
+
+div.ingredient-group:nth-child(odd) {
+	float: left;
+	padding-right: 20px;
+}
+
+div.ingredient-group:nth-child(even) {
+    float: left;
+	padding-right: 0;
+}
+
+div.ingredient-group {
+	width: 50%;
+}
+
+.grid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+span.validationError {
+	color: red;
+}
+

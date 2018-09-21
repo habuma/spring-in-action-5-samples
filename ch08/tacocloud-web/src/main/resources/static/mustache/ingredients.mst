@@ -1,0 +1,6 @@
+{{#.}}
+<div>
+  <input name="ingredients" type="checkbox" value="{{id}}" />
+  <span>{{name}}</span><br/>
+</div>
+{{/.}}

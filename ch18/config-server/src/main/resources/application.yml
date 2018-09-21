@@ -1,0 +1,16 @@
+server:
+  port: 8888
+  
+# Note that this configuration differs slightly from what is in chapter 14.
+# Whereas the GitHub org/user was "tacocloud" in the book, that name doesn't
+# actually exist in GitHub. Instead, the configuration shown here references
+# my GitHub org/user where there is an actual "tacocloud-config" repository.
+# You are welcome to continue using this repository as a source of configuration
+# data, but if you want to play around and tweak the configuration, you'll
+# need to setup your own configuration repository (or fork mine). 
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/habuma/tacocloud-config

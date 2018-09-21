@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "taco.orders.page-size",
+    "type": "java.lang.String",
+    "description": "Sets the maximum number of orders to display in a list."
+  },
+  {
+    "name": "taco.discount.codes",
+    "type": "java.util.Map<String, Integer>",
+    "description": "A map of discount codes to a discount percentage."
+  }
+]}

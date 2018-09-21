@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: ingredient-service
+
+#
+# Note that the config server URI configured here is different than the one that
+# is configured in chapter 14. That's because the one in the book (http://config.tacocloud.com:8888)
+# is made up. But when running this locally, you'll want to use http://localhost:8888.
+# Also note that http://localhost:8888 is the default, so it is not strictly necessary
+# to explicitly set this property in this case.
+#
+  cloud:
+    config:
+      uri: http://localhost:8888
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude: threaddump, heapdump
+  endpoint:
+    health:
+      show-details: always
+  info:
+    git:
+      mode: full
+          
+info:
+  contact:
+    email: support@tacocloud.com
+    phone: 822-625-6831

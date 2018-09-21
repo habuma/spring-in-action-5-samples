@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Received Order</title>
+    <link rel="stylesheet"
+          th:href="@{/styles.css}"></link>
+  </head>
+  
+  <body>
+    <h2>Order for <span th:text="${order.deliveryName}"></span></h2>
+	<h3>Deliver to:</h3>
+	<div>
+	  <span th:text="${order.deliveryStreet}">STREET ADDRESS</span><br/>
+	  <span th:text="${order.deliveryCity}">CITY</span>, 
+	  <span th:text="${order.deliveryState}">STATE</span> 
+	  <span th:text="${order.deliveryZip}">ZIP</span><br/>	
+	</div>
+	
+	<h3>Tacos:</h3>
+	<div th:each="taco : ${order.tacos}">
+	  <b th:text="${taco.name}">TACO NAME</b><br/>
+	  <ul>
+	  	<li th:each="ingredient : ${taco.ingredients}">
+	  	  <span th:text="${ingredient.name}">INGREDIENT</span>
+	  	</li>
+	  </ul>
+	</div>
+	
+	<p>Click the browser refresh to pull the next order.</p>
+  </body>
+</html>

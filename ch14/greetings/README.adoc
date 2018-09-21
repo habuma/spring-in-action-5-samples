@@ -1,0 +1,45 @@
+= Greetings
+
+This folder contains example code from section 14.6 in _Spring in Action, Fifth Edition_. Specifically, it includes the following projects:
+
+ * `config-server` : A Spring Cloud Config Server, serving configuration from https://github.com/habuma/greeting-config. You will probably want to change the configuration to reference your own configuration repository or a fork of this repository so that you can change the value.
+ * `greetings` : The greeting sample code from section 14.6.
+
+To build the projects, run Maven in each of the subfolders:
+
+[source,sh]
+----
+% ./mvnw clean package
+----
+
+Then run each project. To run the config server:
+
+[source,sh]
+----
+% cd config-server
+% java -jar target/config-server-0.0.14-SNAPSHOT.jar
+----
+
+To run the greetings application:
+
+[source,sh]
+----
+% cd greetings
+% java -jar target/greetings-0.0.14-SNAPSHOT.jar
+----
+
+Once the application is running, you can use `curl` to check the currently configured greeting value:
+
+[source,sh]
+----
+% curl localhost:8080/hello
+----
+
+After committing a change to the `greeting.message` property in the configuration repository, refresh the value by submitting a POST request to the Actuator's refresh endpoint:
+
+[source,sh]
+----
+% curl localhost:8080/actuator/refresh -X POST
+----
+
+Then request the currently configured value again to see that it has changed.

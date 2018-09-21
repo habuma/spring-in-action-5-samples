@@ -1,0 +1,39 @@
+<div class="header">
+  <div class="logo"><a [routerLink]="['/home']"><img src="assets/TacoCloud.png"/></a></div>
+  <div class="topbar">
+    <div class="topbaritems">
+      <div class="topbaritem" style="font-size: 17pt;">
+        <a [routerLink]="['design']" class="plainlink caps">Design a Taco</a>
+      </div>
+      <div class="topbaritem">
+        <a href="login" class="plainlink">
+          <img src="assets/down-triangle.png" style="float: right; margin-right:15px; margin-top: 12px;"/>
+          <span class="caps small">Sign in</span><br/>
+          <span class="smaller">or Create an Account</span>
+        </a>
+      </div>
+      <div class="topbaritem" style="font-size: 17pt;">
+        <a [routerLink]="['cart']" class="plainlink">
+          <img src="assets/cart.png" align="center" />
+          {{cart.getItemsInCart().length * 4.99 | currency}}
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="bottombar">
+    <div class="bottombaritems">
+      <div class="bottombaritem">
+        <!-- <a href="recents" class="plainlink">Latest designs</a> -->
+        <a [routerLink]="['recents']" class="plainlink">Latest designs</a>
+      </div>
+      <div class="bottombaritem">
+        <!-- <a href="specials" class="plainlink">Specials</a> -->
+        <a [routerLink]="['specials']" class="plainlink">Specials</a>
+      </div>
+      <div class="bottombaritem">
+        <!-- <a href="locations" class="plainlink">Locations</a> -->
+        <a [routerLink]="['locations']" class="plainlink">Locations</a>
+      </div>
+    </div>
+  </div>
+</div>

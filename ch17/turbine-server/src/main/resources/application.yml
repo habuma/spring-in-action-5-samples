@@ -1,0 +1,15 @@
+server:
+  port: 8989
+  
+#
+# In chapter 15, the turbine.app-config property is shown to be configured with 
+# multiple service names. Since this project does not (yet) contain the entire 
+# Taco Cloud application in the form of multiple services, I've only configured 
+# it here with the two services (which includes the client application) that are 
+# part of this project. 
+#
+turbine:
+  app-config: ingredient-service, ingredient-client
+#  app-config: ingredient-service, taco-service, order-service, user-service
+  cluster-name-expression: "'default'"
+  

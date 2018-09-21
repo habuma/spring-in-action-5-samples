@@ -1,0 +1,10 @@
+= Taco Cloud v0.0.11
+
+This folder contains two distinct implementations of Taco Cloud:
+
+ * `tacocloud-cassandra` : Taco Cloud with Cassandra persistence.
+ * `tacocloud-mongodb` : Taco Cloud with MongoDB persistence.
+
+While there is a lot of common code between these two projects, the domain and data submodules are quite different. And since many of the project's submodules are dependent on those submodules, it was easier to just create two separate incarnations of the project.
+
+Refer to the README.adoc file in each project for more details.

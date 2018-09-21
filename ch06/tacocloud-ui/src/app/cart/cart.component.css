@@ -1,0 +1,82 @@
+ul.commalist {
+  display: inline;
+  list-style: none;
+  padding: 0;
+}
+
+ul.commalist li {
+  display: inline;
+}
+
+ul.commalist li:not(:first-child):before {
+  content: ", ";
+}
+
+ul.commalist li:last-child:before {
+  content: " and ";
+}
+
+ul.commalist li:only-child:before {
+  content: "";
+}
+
+span.caps {
+  text-transform: capitalize;
+}
+
+a {
+  color: inherit;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+input {
+  font-size: 14pt;
+  color: #003366;
+}
+
+select {
+  font-size: 14pt;
+  color: #003366;
+  background-color: white;
+}
+
+div.groupBoxHalf {
+  width: 450px;
+}
+
+div.groupBoxFull {
+  width: 938px;
+}
+
+div.groupBox {
+  display: inline-block;
+  vertical-align: top;
+  background-image: url('../../assets/taco-icon.png');
+  background-repeat: no-repeat;
+  background-color: rgba(118, 214, 255, 0.25);
+  margin: 10px;
+  border-radius: 10px;
+  text-align: right;
+  padding: 0 10px 10px 0;
+  height: 100%;
+  color: #003366;
+  border: 1px solid #76D6FF;
+}
+
+div.groupBoxTitle {
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid lightblue;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+div.groupBoxContent {
+  padding: 20px;
+  text-align: left;
+}
