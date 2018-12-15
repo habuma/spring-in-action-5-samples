@@ -15,6 +15,8 @@ Starting with Chapter 6, Taco Cloud is broken into a multi-module Maven project.
 % ./mvnw clean package
 ----
 
+The Maven build will also build the Angular client code and package it along with the Spring code. To do that, you'll need to make sure that you have Node and the Angular CLI installed before building the project. (See https://cli.angular.io/ for details.)
+
 Once the project is built, you can run the executable JAR file from the `tacos` project:
 
 [source,sh]
