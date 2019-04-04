@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import tacos.Taco;
 import tacos.Ingredient;
 import tacos.Ingredient.Type;
 import tacos.Order;
-import tacos.data.TacoRepository;
+import tacos.Taco;
 import tacos.data.IngredientRepository;
+import tacos.data.TacoRepository;
 
 // tag::classShell[]
 @Controller
@@ -72,20 +71,22 @@ public class DesignTacoController {
     return new Taco();
   }
 
+  @ModelAttribute
+  public void addIngredientsToModel(Model model) {
+
+	List<Ingredient> ingredients = new ArrayList<>();
+	ingredientRepo.findAll().forEach(ingredients::add);
+	Type[] types = Ingredient.Type.values();
+	for (Type type : types) {
+		model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
+	}
+  }
+
   // end::modelAttributes[]
   // tag::showDesignForm[]
   
   @GetMapping
   public String showDesignForm(Model model) {
-    List<Ingredient> ingredients = new ArrayList<>();
-    ingredientRepo.findAll().forEach(i -> ingredients.add(i));
-    
-    Type[] types = Ingredient.Type.values();
-    for (Type type : types) {
-      model.addAttribute(type.toString().toLowerCase(), 
-          filterByType(ingredients, type));      
-    }
-
     return "design";
   }
 //end::showDesignForm[]
@@ -93,8 +94,7 @@ public class DesignTacoController {
   //tag::processDesign[]
   @PostMapping
   public String processDesign(
-      @Valid Taco design, Errors errors, 
-      @ModelAttribute Order order) {
+			@ModelAttribute @Valid Taco design, Errors errors, @ModelAttribute Order order) {
 
     if (errors.hasErrors()) {
       return "design";
