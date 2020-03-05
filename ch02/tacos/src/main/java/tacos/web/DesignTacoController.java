@@ -42,11 +42,18 @@ public void addIngredientsToModel(Model model) {
 	  new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
 	);
 	
+	// more concise and readable
+	Map<String, List<Ingredient>> ingredientsByType = ingredients.stream()
+                .collect(Collectors.groupingBy(ingredient -> ingredient.getType().toString().toLowerCase()));
+        model.addAllAttributes(ingredientsByType);
+	
+	/*
 	Type[] types = Ingredient.Type.values();
 	for (Type type : types) {
 	  model.addAttribute(type.toString().toLowerCase(),
 	      filterByType(ingredients, type));
 	}
+	*/
 }
 	
 //tag::showDesignForm[]
@@ -65,10 +72,8 @@ public void addIngredientsToModel(Model model) {
     // Save the taco design...
     // We'll do this in chapter 3
     log.info("Processing design: " + design);
-
     return "redirect:/orders/current";
   }
-
 //end::processDesign[]
  */
 
@@ -88,16 +93,18 @@ public void addIngredientsToModel(Model model) {
 
 //end::processDesignValidated[]
 
+/*
 //tag::filterByType[]
-  private List<Ingredient> filterByType(
+ private List<Ingredient> filterByType(
       List<Ingredient> ingredients, Type type) {
     return ingredients
               .stream()
               .filter(x -> x.getType().equals(type))
               .collect(Collectors.toList());
   }
-
 //end::filterByType[]
+*/
+
 // tag::foot[]
 }
 // end::foot[]
