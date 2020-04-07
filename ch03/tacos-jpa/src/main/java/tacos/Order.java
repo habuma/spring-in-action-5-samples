@@ -1,4 +1,3 @@
-// tag::allButDetailProperties[]
 package tacos;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ public class Order implements Serializable {
   
   private Date placedAt;
   
-//end::allButDetailProperties[]
   @NotBlank(message="Delivery name is required")
   private String deliveryName;
   
@@ -60,13 +58,10 @@ public class Order implements Serializable {
   private String ccCVV;
 
   /*
-  //tag::allButDetailProperties[]
   ...
   
-  //end::allButDetailProperties[]
    */
   
-//tag::allButDetailProperties[]
   @ManyToMany(targetEntity=Taco.class)
   private List<Taco> tacos = new ArrayList<>();
   
@@ -80,4 +75,3 @@ public class Order implements Serializable {
   }
   
 }
-//end::allButDetailProperties[]

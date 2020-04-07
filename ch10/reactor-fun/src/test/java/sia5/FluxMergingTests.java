@@ -12,7 +12,6 @@ public class FluxMergingTests {
 
   @Test
   public void mergeFluxes() {
-    
     // delays needed to avoid the first flux from streaming the
     // data through before subscribing to the second flux.
     
@@ -58,7 +57,7 @@ public class FluxMergingTests {
               p.getT2().equals("Apples"))
           .verifyComplete();
   }
-  
+
   @Test
   public void zipFluxesToObject() {
     Flux<String> characterFlux = Flux
@@ -75,7 +74,6 @@ public class FluxMergingTests {
           .expectNext("Barbossa eats Apples")
           .verifyComplete();
   }
-  
   
   @Test
   public void firstFlux() {

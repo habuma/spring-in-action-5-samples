@@ -44,6 +44,18 @@
                 <include>*</include>
               </includes>
             </fileset>
+            <fileset>
+              <directory>node</directory>
+              <includes>
+                <include>**</include>
+              </includes>
+            </fileset>
+            <fileset>
+              <directory>node_modules</directory>
+              <includes>
+                <include>**</include>
+              </includes>
+            </fileset>
           </filesets>
         </configuration>
       </plugin>

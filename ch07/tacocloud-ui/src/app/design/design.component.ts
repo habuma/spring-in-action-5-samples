@@ -27,7 +27,6 @@ export class DesignComponent implements OnInit {
   constructor(private httpClient: HttpClient, private router: Router, private cart: CartService) {
   }
 
-  // tag::ngOnInit[]
   ngOnInit() {
     this.httpClient.get('http://localhost:8080/ingredients')
         .subscribe(data => {
@@ -39,7 +38,6 @@ export class DesignComponent implements OnInit {
           this.sauces = this.allIngredients.filter(s => s.type === 'SAUCE');
         });
   }
-  // end::ngOnInit[]
 
   updateIngredients(ingredient, event) {
     if (event.target.checked) {
@@ -49,7 +47,6 @@ export class DesignComponent implements OnInit {
     }
   }
 
-  // tag::onSubmit[]
   onSubmit() {
     this.httpClient.post(
         'http://localhost:8080/design',
@@ -59,6 +56,5 @@ export class DesignComponent implements OnInit {
 
     this.router.navigate(['/cart']);
   }
-  // end::onSubmit[]
 
 }

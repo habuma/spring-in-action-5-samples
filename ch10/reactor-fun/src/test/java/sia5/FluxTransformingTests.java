@@ -24,7 +24,7 @@ public class FluxTransformingTests {
         .expectNext("ninety nine", "one hundred")
         .verifyComplete();
   }
-  
+
   @Test
   public void skipAFewSeconds() {
     Flux<String> countFlux = Flux.just(
@@ -81,7 +81,7 @@ public class FluxTransformingTests {
         .expectNext("dog", "cat", "bird", "anteater")
         .verifyComplete();
   }
-  
+
   @Test
   public void map() {
     Flux<Player> playerFlux = Flux

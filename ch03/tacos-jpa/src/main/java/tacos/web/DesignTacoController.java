@@ -23,29 +23,20 @@ import tacos.Taco;
 import tacos.data.IngredientRepository;
 import tacos.data.TacoRepository;
 
-//tag::injectingDesignRepository[]
-//tag::injectingIngredientRepository[]
 @Controller
 @RequestMapping("/design")
-//end::injectingIngredientRepository[]
 @SessionAttributes("order")
-//tag::injectingIngredientRepository[]
 public class DesignTacoController {
 
   private final IngredientRepository ingredientRepo;
 
-  //end::injectingIngredientRepository[]
   private TacoRepository tacoRepo;
 
-  //end::injectingDesignRepository[]
   /*
-  //tag::injectingIngredientRepository[]
   public DesignTacoController(IngredientRepository ingredientRepo) {
     this.ingredientRepo = ingredientRepo;
   }
-  //end::injectingIngredientRepository[]
    */
-  //tag::injectingDesignRepository[]
 
   @Autowired
   public DesignTacoController(
@@ -55,36 +46,35 @@ public class DesignTacoController {
     this.tacoRepo = tacoRepo;
   }
 
+  @ModelAttribute
+  public void addIngredientsToModel(Model model) {
+    List<Ingredient> ingredients = new ArrayList<>();
+    ingredientRepo.findAll().forEach(i -> ingredients.add(i));
+    
+    Type[] types = Ingredient.Type.values();
+    for (Type type : types) {
+      model.addAttribute(type.toString().toLowerCase(), 
+          filterByType(ingredients, type));      
+    }
+  }
+
   @ModelAttribute(name = "order")
   public Order order() {
     return new Order();
   }
 
-  @ModelAttribute(name = "design")
-  public Taco design() {
+  @ModelAttribute(name = "taco")
+  public Taco taco() {
     return new Taco();
   }
 
-  //end::injectingDesignRepository[]
 
-  //tag::injectingIngredientRepository[]
 
   @GetMapping
   public String showDesignForm(Model model) {
-    List<Ingredient> ingredients = new ArrayList<>();
-    ingredientRepo.findAll().forEach(i -> ingredients.add(i));
-
-    Type[] types = Ingredient.Type.values();
-    for (Type type : types) {
-      model.addAttribute(type.toString().toLowerCase(),
-          filterByType(ingredients, type));
-    }
-
     return "design";
   }
-  //end::injectingIngredientRepository[]
 
-//tag::injectingDesignRepository[]
   @PostMapping
   public String processDesign(
       @Valid Taco taco, Errors errors,
@@ -100,7 +90,6 @@ public class DesignTacoController {
     return "redirect:/orders/current";
   }
 
-//end::injectingDesignRepository[]
 
   private List<Ingredient> filterByType(
       List<Ingredient> ingredients, Type type) {
@@ -111,17 +100,9 @@ public class DesignTacoController {
   }
 
   /*
-  //tag::injectingDesignRepository[]
-  //tag::injectingIngredientRepository[]
 
    ...
-  //end::injectingIngredientRepository[]
-  //end::injectingDesignRepository[]
   */
 
-//tag::injectingDesignRepository[]
-//tag::injectingIngredientRepository[]
 
 }
-//end::injectingIngredientRepository[]
-//end::injectingDesignRepository[]
