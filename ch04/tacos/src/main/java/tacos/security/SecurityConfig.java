@@ -17,6 +17,7 @@ import org.springframework.security.config.annotation
 import org.springframework.security.config.annotation.web
              .builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
@@ -98,7 +99,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   //tag::customUserDetailsService_withPasswordEncoder[]
   @Bean
   public PasswordEncoder encoder() {
-    return new StandardPasswordEncoder("53cr3t");
+    return new BCryptPasswordEncoder();
   }
   
   
