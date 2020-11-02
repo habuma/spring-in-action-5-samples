@@ -63,7 +63,7 @@ public class OrderApiController {
       order.setDeliveryState(patch.getDeliveryState());
     }
     if (patch.getDeliveryZip() != null) {
-      order.setDeliveryZip(patch.getDeliveryState());
+      order.setDeliveryZip(patch.getDeliveryZip());
     }
     if (patch.getCcNumber() != null) {
       order.setCcNumber(patch.getCcNumber());
