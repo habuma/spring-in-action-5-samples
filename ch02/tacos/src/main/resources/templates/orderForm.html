@@ -22,7 +22,7 @@
       </div>
 
       <h3>Deliver my taco masterpieces to...</h3>
-      <label for="name">Name: </label>
+      <label th:for="name">Name: </label>
       <input type="text" th:field="*{name}"/>
 <!-- end::allButValidation[] -->
       <span class="validationError"
@@ -31,7 +31,7 @@
 <!-- tag::allButValidation[] -->
       <br/>
 
-      <label for="street">Street address: </label>
+      <label th:for="street">Street address: </label>
       <input type="text" th:field="*{street}"/>
 <!-- end::allButValidation[] -->
       <span class="validationError"
@@ -40,7 +40,7 @@
 <!-- tag::allButValidation[] -->
       <br/>
 
-      <label for="city">City: </label>
+      <label th:for="city">City: </label>
       <input type="text" th:field="*{city}"/>
 <!-- end::allButValidation[] -->
       <span class="validationError"
@@ -49,7 +49,7 @@
 <!-- tag::allButValidation[] -->
       <br/>
 
-      <label for="state">State: </label>
+      <label th:for="state">State: </label>
       <input type="text" th:field="*{state}"/>
 <!-- end::allButValidation[] -->
       <span class="validationError"
@@ -58,7 +58,7 @@
 <!-- tag::allButValidation[] -->
       <br/>
 
-      <label for="zip">Zip code: </label>
+      <label th:for="zip">Zip code: </label>
       <input type="text" th:field="*{zip}"/>
 <!-- end::allButValidation[] -->
       <span class="validationError"
@@ -69,7 +69,7 @@
 
       <h3>Here's how I'll pay...</h3>
 <!-- tag::validatedField[] -->
-      <label for="ccNumber">Credit Card #: </label>
+      <label th:for="ccNumber">Credit Card #: </label>
       <input type="text" th:field="*{ccNumber}"/>
 <!-- end::allButValidation[] -->
       <span class="validationError"
@@ -79,7 +79,7 @@
 <!-- end::validatedField[] -->
       <br/>
 
-      <label for="ccExpiration">Expiration: </label>
+      <label th:for="ccExpiration">Expiration: </label>
       <input type="text" th:field="*{ccExpiration}"/>
 <!-- end::allButValidation[] -->
       <span class="validationError"
@@ -88,7 +88,7 @@
 <!-- tag::allButValidation[] -->
       <br/>
 
-      <label for="ccCVV">CVV: </label>
+      <label th:for="ccCVV">CVV: </label>
       <input type="text" th:field="*{ccCVV}"/>
 <!-- end::allButValidation[] -->
       <span class="validationError"
